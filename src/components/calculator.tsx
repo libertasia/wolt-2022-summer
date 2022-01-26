@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import "flatpickr/dist/flatpickr.min.css";
 import Flatpickr from 'react-flatpickr';
-
 import { useAppSelector, useAppDispatch } from '../app/hooks';
 import {
   setCartValue,
   setAmount,
   setDistance,
-  setTime
+  setTime,
+  setDeliveryFee,
 } from '../app/calculatorSlice';
+import { roundToTwoDecimals } from '../utils';
 
 const dateFormat: string = `d-m-Y H:i`;
 
@@ -17,12 +18,12 @@ const minDate: string = `today`;
 const Calculator: React.FC = () => {
   const dispatch = useAppDispatch();
 
-  const [cartAmount, setCartAmount] = useState('0');
-  const [distanceAmount, setDistanceAmount] = useState('0');
-  const [itemsAmount, setItemsAmount] = useState('0');
+  const [cartAmount, setCartAmount] = useState<string>('0');
+  const [distanceAmount, setDistanceAmount] = useState<string>('0');
+  const [itemsAmount, setItemsAmount] = useState<string>('0');
 
   // rounding cartValue to 2 decimals
-  const cartValue = Math.round((Number(cartAmount) + Number.EPSILON) * 100) / 100 || 0;
+  const cartValue = roundToTwoDecimals(Number(cartAmount)) || 0;
   const distanceValue = Math.round(Number(distanceAmount)) || 0;
   const itemsValue = Math.round(Number(itemsAmount)) || 0;
 
@@ -79,7 +80,6 @@ const Calculator: React.FC = () => {
           <label htmlFor="time">Time</label>
           <Flatpickr
             // className="conversion-form__date"
-            // defaultValue={conversionDate.toLocaleDateString()}
             onChange={(selectedDates) => dispatch(setTime(selectedDates[0]))}
             name="time"
             placeholder="Select Date and Time.."
@@ -90,7 +90,12 @@ const Calculator: React.FC = () => {
             }}/>
         </div>
 
-        <button type="button">Calculate delivery price</button>
+        <button
+          type="button"
+          onClick={() => dispatch(setDeliveryFee(true))}
+        >
+          Calculate delivery price
+        </button>
       </form>
 
       <p>Delivery price: <span></span> <span>&euro;</span></p>

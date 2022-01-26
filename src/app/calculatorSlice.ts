@@ -1,18 +1,23 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-// import { RootState, AppThunk } from '../app/store';
+import { calculateDeliveryFee } from "../utils";
+import { RootState } from "./store";
 
 export interface CalculatorState {
   cartValue: number;
   distance: number;
-  amount: number;
+  amountOfItems: number;
   time: Date;
+  deliveryFee: number;
+  isFeeCalculated: boolean;
 }
 
 const initialState: CalculatorState = {
   cartValue: 0,
   distance: 0,
-  amount: 0,
+  amountOfItems: 0,
   time: new Date(),
+  deliveryFee: 0,
+  isFeeCalculated: false,
 };
 
 export const calculatorSlice = createSlice({
@@ -26,19 +31,22 @@ export const calculatorSlice = createSlice({
       state.distance = action.payload;
     },
     setAmount: (state, action: PayloadAction<number>) => {
-      state.amount = action.payload;
+      state.amountOfItems = action.payload;
     },
     setTime: (state, action: PayloadAction<Date>) => {
       state.time = action.payload;
     },
+    setDeliveryFee: (state, action: PayloadAction<boolean>) => {
+      state.deliveryFee = calculateDeliveryFee(state.cartValue, state.distance, state.amountOfItems, state.time);
+      state.isFeeCalculated = action.payload;
+    },
   },
 });
 
-export const { setCartValue, setDistance, setAmount, setTime } = calculatorSlice.actions;
+export const { setCartValue, setDistance, setAmount, setTime, setDeliveryFee } = calculatorSlice.actions;
 
-// The function below is called a selector and allows us to select a value from
-// the state. Selectors can also be defined inline where they're used instead of
-// in the slice file. For example: `useSelector((state: RootState) => state.counter.value)`
-//export const selectCount = (state: RootState) => state.counter.value;
+export const selectDeliveryFee = (state: RootState) => state.calculator.deliveryFee;
+
+export const selectIsFeeCalculatedStatus = (state: RootState) => state.calculator.isFeeCalculated;
 
 export default calculatorSlice.reducer;
