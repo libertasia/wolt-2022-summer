@@ -18,7 +18,6 @@ const Calculator: React.FC = () => {
         ? <p>Delivery price: <span>{deliveryFee}</span> <span>&euro;</span></p>
         : <p>Click button to calculate Delivery price</p>
       }
-
     </section>
   )
 }
