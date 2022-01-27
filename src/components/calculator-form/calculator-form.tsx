@@ -16,6 +16,8 @@ const dateFormat: string = `d-m-Y H:i`;
 
 const minDate: string = `today`;
 
+const regexArray: Array<string> = ["e", "E", "+", "-"];
+
 const CalculatorForm: React.FC = () => {
   const dispatch = useAppDispatch();
 
@@ -28,6 +30,10 @@ const CalculatorForm: React.FC = () => {
   const distanceValue = Math.round(Number(distanceAmount)) || 0;
   const itemsValue = Math.round(Number(itemsAmount)) || 0;
 
+  const keyDownHandler = (evt: React.KeyboardEvent) => {
+    regexArray.includes(evt.key) && evt.preventDefault()
+  }
+
   return (
     <form action="#" method="get">
       <div>
@@ -35,7 +41,7 @@ const CalculatorForm: React.FC = () => {
         <input
           id="cart-value" type="number" name="cart-value" step="any" min={0}
           value={cartAmount}
-          onKeyDown={(evt) => ["e", "E", "+", "-"].includes(evt.key) && evt.preventDefault()}
+          onKeyDown={keyDownHandler}
           onChange={(e) => {
             dispatch(setIsFeeCalculatedStatus(false));
             setCartAmount(e.target.value);
@@ -53,7 +59,7 @@ const CalculatorForm: React.FC = () => {
         <input
           id="distance" type="number" name="distance" min={0}
           value={distanceAmount}
-          onKeyDown={(evt) => ["e", "E", "+", "-"].includes(evt.key) && evt.preventDefault()}
+          onKeyDown={keyDownHandler}
           onChange={(e) => {
             dispatch(setIsFeeCalculatedStatus(false));
             setDistanceAmount(e.target.value);
@@ -71,7 +77,7 @@ const CalculatorForm: React.FC = () => {
         <input
           id="amount" type="number" name="amount" min={0}
           value={itemsAmount}
-          onKeyDown={(evt) => ["e", "E", "+", "-"].includes(evt.key) && evt.preventDefault()}
+          onKeyDown={keyDownHandler}
           onChange={(e) => {
             dispatch(setIsFeeCalculatedStatus(false));
             setItemsAmount(e.target.value);
