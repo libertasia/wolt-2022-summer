@@ -25,3 +25,9 @@ export const SURCHARGE_PER_DISTANCE_STEP: number = 1;
 export const DELIVERY_DISTANCE_STEP: number = 500;
 
 export const BASE_DISTANCE: number = 1000;
+
+export const DATE_FORMAT: string = `d-m-Y H:i`;
+
+export const MIN_DATE: string = `today`;
+
+export const REGEX_ARRAY: Array<string> = ["e", "E", "+", "-"];
