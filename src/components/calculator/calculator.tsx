@@ -5,8 +5,8 @@ import CalculatorForm from '../calculator-form/calculator-form';
 
 
 const Calculator: React.FC = () => {
-  const deliveryFee = useAppSelector(selectDeliveryFee);
-  const isFeeCalculated = useAppSelector(selectIsFeeCalculatedStatus);
+  const deliveryFee: number = useAppSelector(selectDeliveryFee);
+  const isFeeCalculated: boolean = useAppSelector(selectIsFeeCalculatedStatus);
 
   return (
     <section>

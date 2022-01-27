@@ -8,6 +8,7 @@ import {
   setDistance,
   setTime,
   setDeliveryFee,
+  setIsFeeCalculatedStatus,
 } from '../../app/calculatorSlice';
 import { roundToTwoDecimals } from '../../utils';
 
@@ -35,8 +36,11 @@ const CalculatorForm: React.FC = () => {
           id="cart-value" type="number" name="cart-value" step="any" min={0}
           value={cartAmount}
           onKeyDown={(evt) => ["e", "E", "+", "-"].includes(evt.key) && evt.preventDefault()}
-          onChange={(e) => setCartAmount(e.target.value)}
-          onBlur={(e) => {
+          onChange={(e) => {
+            dispatch(setIsFeeCalculatedStatus(false));
+            setCartAmount(e.target.value);
+          }}
+          onBlur={() => {
             dispatch(setCartValue(cartValue));
             setCartAmount(cartValue.toString());
           }}
@@ -50,8 +54,11 @@ const CalculatorForm: React.FC = () => {
           id="distance" type="number" name="distance" min={0}
           value={distanceAmount}
           onKeyDown={(evt) => ["e", "E", "+", "-"].includes(evt.key) && evt.preventDefault()}
-          onChange={(e) => setDistanceAmount(e.target.value)}
-          onBlur={(e) => {
+          onChange={(e) => {
+            dispatch(setIsFeeCalculatedStatus(false));
+            setDistanceAmount(e.target.value);
+          }}
+          onBlur={() => {
             dispatch(setDistance(distanceValue));
             setDistanceAmount(distanceValue.toString());
           }}
@@ -65,8 +72,11 @@ const CalculatorForm: React.FC = () => {
           id="amount" type="number" name="amount" min={0}
           value={itemsAmount}
           onKeyDown={(evt) => ["e", "E", "+", "-"].includes(evt.key) && evt.preventDefault()}
-          onChange={(e) => setItemsAmount(e.target.value)}
-          onBlur={(e) => {
+          onChange={(e) => {
+            dispatch(setIsFeeCalculatedStatus(false));
+            setItemsAmount(e.target.value);
+          }}
+          onBlur={() => {
             dispatch(setAmount(itemsValue));
             setItemsAmount(itemsValue.toString());
           }}
@@ -77,7 +87,10 @@ const CalculatorForm: React.FC = () => {
         <label htmlFor="time">Time</label>
         <Flatpickr
           // className="conversion-form__date"
-          onChange={(selectedDates) => dispatch(setTime(selectedDates[0]))}
+          onChange={(selectedDates) => {
+            dispatch(setIsFeeCalculatedStatus(false));
+            dispatch(setTime(selectedDates[0]));
+          }}
           name="time"
           placeholder="Select Date and Time.."
           options={{

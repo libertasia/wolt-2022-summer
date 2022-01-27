@@ -40,10 +40,13 @@ export const calculatorSlice = createSlice({
       state.deliveryFee = calculateDeliveryFee(state.cartValue, state.distance, state.amountOfItems, state.time);
       state.isFeeCalculated = action.payload;
     },
+    setIsFeeCalculatedStatus: (state, action: PayloadAction<boolean>) => {
+      state.isFeeCalculated = action.payload;
+    },
   },
 });
 
-export const { setCartValue, setDistance, setAmount, setTime, setDeliveryFee } = calculatorSlice.actions;
+export const { setCartValue, setDistance, setAmount, setTime, setDeliveryFee, setIsFeeCalculatedStatus } = calculatorSlice.actions;
 
 export const selectDeliveryFee = (state: RootState) => state.calculator.deliveryFee;
 
