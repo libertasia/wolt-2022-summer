@@ -1,10 +1,10 @@
 import React from 'react';
-import Calculator from './components/calculator/calculator';
-// import './App.css';
+import MainScreen from './components/main-screen/main-screen';
+import './scss/style.scss';
 
 const App:React.FC = () => {
   return (
-    <Calculator />
+    <MainScreen />
   );
 }
 

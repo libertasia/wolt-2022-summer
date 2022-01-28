@@ -1,0 +1,12 @@
+.header {
+  flex: 0 0 auto;
+  background-color: $header-background;
+  color: $header-text-color;
+  margin-bottom: 20px;
+}
+
+.header__wrapper p {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}

@@ -1,0 +1,17 @@
+.container {
+  margin: 0 auto;
+  max-width: $large;
+  width: 100%;
+  padding: 0 98px;
+
+    @media (min-width: $tablet) and (max-width: $desktop-breakpoint) {
+      padding: 0 45px;
+      max-width: $desktop-breakpoint;
+    }
+
+    @media (min-width: $mobile) and (max-width: $table-breakpoint) {
+      padding: 0 15px;
+      max-width: $table-breakpoint;
+      min-width: $mobile;
+    }
+}

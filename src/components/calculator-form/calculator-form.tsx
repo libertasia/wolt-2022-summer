@@ -63,12 +63,14 @@ const CalculatorForm: React.FC = () => {
   }
 
   return (
-    <form action="#" method="get" onSubmit={formSubmitHandler}>
-      <div>
-        <div>
-          <label htmlFor="cart-value">Cart value</label>
+    <form className="calculator__form calculator-form" action="#" method="get" onSubmit={formSubmitHandler}>
+      <div className="calculator-form__field-wrapper">
+        <label className="calculator-form__label" htmlFor="cart-value">Cart value, <span>&euro;</span></label>
+        <div className="calculator-form__input-wrapper">
           <input
+            className={`calculator-form__input ${isCartAmountError ? "calculator-form__input-error" : ""}`}
             id="cart-value" type="number" name="cart-value" step="any" min={0}
+            placeholder="20"
             value={cartAmount}
             onKeyDown={keyDownHandler}
             onChange={(e) => {
@@ -81,18 +83,19 @@ const CalculatorForm: React.FC = () => {
               setCartAmount(cartValue.toString());
             }}
           />
-          <span>&euro;</span>
+          {isCartAmountError &&
+            <ErrorMessage />
+          }
         </div>
-        {isCartAmountError &&
-          <ErrorMessage />
-        }
       </div>
 
-      <div>
-        <div>
-          <label htmlFor="distance">Delivery distance</label>
+      <div className="calculator-form__field-wrapper">
+        <label className="calculator-form__label" htmlFor="distance">Delivery distance, <span>m</span></label>
+        <div className="calculator-form__input-wrapper">
           <input
+            className={`calculator-form__input ${isDistanceError ? "calculator-form__input-error" : ""}`}
             id="distance" type="number" name="distance" min={0}
+            placeholder="1500"
             value={distanceAmount}
             onKeyDown={keyDownHandler}
             onChange={(e) => {
@@ -105,18 +108,19 @@ const CalculatorForm: React.FC = () => {
               setDistanceAmount(distanceValue.toString());
             }}
           />
-          <span>m</span>
+          {isDistanceError &&
+            <ErrorMessage />
+          }
         </div>
-        {isDistanceError &&
-          <ErrorMessage />
-        }
       </div>
 
-      <div>
-        <div>
-          <label htmlFor="amount">Amount of items</label>
+      <div className="calculator-form__field-wrapper">
+        <label className="calculator-form__label" htmlFor="amount">Amount of items</label>
+        <div className="calculator-form__input-wrapper">
           <input
+            className={`calculator-form__input ${isItemsAmountError ? "calculator-form__input-error" : ""}`}
             id="amount" type="number" name="amount" min={0}
+            placeholder="5"
             value={itemsAmount}
             onKeyDown={keyDownHandler}
             onChange={(e) => {
@@ -129,17 +133,17 @@ const CalculatorForm: React.FC = () => {
               setItemsAmount(itemsValue.toString());
             }}
           />
+          {isItemsAmountError &&
+            <ErrorMessage />
+          }
         </div>
-        {isItemsAmountError &&
-          <ErrorMessage />
-        }
       </div>
 
-      <div>
-        <div>
-          <label htmlFor="time">Time</label>
+      <div className="calculator-form__field-wrapper">
+        <label className="calculator-form__label" htmlFor="time">Time</label>
+        <div className="calculator-form__input-wrapper">
           <Flatpickr
-            // className="conversion-form__date"
+            className={`calculator-form__input calculator-form__input--calendar ${isTimeError ? "calculator-form__input-error" : ""}`}
             onChange={(selectedDates) => {
               if (selectedDates.length > 0) {
                 setTimeAmount(selectedDates[0].toString())
@@ -159,13 +163,13 @@ const CalculatorForm: React.FC = () => {
               dateFormat: DATE_FORMAT,
               minDate: MIN_DATE,
             }}/>
+          {isTimeError &&
+            <ErrorMessage />
+          }
         </div>
-        {isTimeError &&
-          <ErrorMessage />
-        }
       </div>
 
-      <button type="submit">Calculate delivery price</button>
+      <button className="calculator-form__button" type="submit">Calculate delivery price</button>
     </form>
   )
 }

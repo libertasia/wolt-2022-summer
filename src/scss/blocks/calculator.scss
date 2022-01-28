@@ -1,0 +1,26 @@
+.calculator {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0 auto;
+  max-width: 46.875rem;
+}
+
+.calculator__title {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.calculator__message-wrapper {
+  margin: 0 auto;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.calculator__message-price {
+  color: $text-highlight-color;
+}
+
+.calculator__message-click {
+  color: $footer-text-color;
+}
