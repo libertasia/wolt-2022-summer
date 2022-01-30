@@ -25,7 +25,7 @@ export type ReturnDeliveryFee = (
 export const calculateDeliveryFee: ReturnDeliveryFee = (cartValue, distance, amountOfItems, time) => {
   let deliveryFee = 0;
 
-  // The delivery fee can never be more than 15€, including possible surcharges.
+  // The delivery is free (0€) when the cart value is equal or more than 100€.
   if (cartValue >= BIG_CART_VALUE) {
     return FREE_DELIVERY_FEE;
   }
@@ -59,6 +59,7 @@ export const calculateDeliveryFee: ReturnDeliveryFee = (cartValue, distance, amo
     deliveryFee = deliveryFee * FRIDAY_RUSH_MULTIPLIER;
   }
 
+  // The delivery fee can never be more than 15€, including possible surcharges.
   return deliveryFee < MAX_DELIVERY_FEE ? roundToTwoDecimals(deliveryFee) : MAX_DELIVERY_FEE;
 }
 
