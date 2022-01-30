@@ -17,7 +17,7 @@ const Calculator: React.FC = () => {
       <div className='calculator__message-wrapper'>
         {isFeeCalculated
           ? <p className='calculator__message-price'>Delivery price: <span>{deliveryFee}</span> <span>&euro;</span></p>
-          : <p className='calculator__message-click'>Click button to calculate Delivery price</p>
+          : <p className='calculator__message-click' data-testId='click-message'>Click button to calculate Delivery price</p>
         }
       </div>
     </section>

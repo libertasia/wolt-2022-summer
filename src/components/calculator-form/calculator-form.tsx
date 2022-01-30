@@ -72,6 +72,7 @@ const CalculatorForm: React.FC = () => {
             id='cart-value' type='number' name='cart-value' step='any' min={0}
             placeholder='20'
             value={cartAmount}
+            data-testid='cart-value-input'
             onKeyDown={keyDownHandler}
             onChange={(e) => {
               dispatch(setIsFeeCalculatedStatus(false));
@@ -97,6 +98,7 @@ const CalculatorForm: React.FC = () => {
             id='distance' type='number' name='distance' min={0}
             placeholder='1500'
             value={distanceAmount}
+            data-testid='distance-input'
             onKeyDown={keyDownHandler}
             onChange={(e) => {
               dispatch(setIsFeeCalculatedStatus(false));
@@ -122,6 +124,7 @@ const CalculatorForm: React.FC = () => {
             id='amount' type='number' name='amount' min={0}
             placeholder='5'
             value={itemsAmount}
+            data-testid='amount-input'
             onKeyDown={keyDownHandler}
             onChange={(e) => {
               dispatch(setIsFeeCalculatedStatus(false));
@@ -144,6 +147,7 @@ const CalculatorForm: React.FC = () => {
         <div className='calculator-form__input-wrapper'>
           <Flatpickr
             className={`calculator-form__input calculator-form__input--calendar ${isTimeError ? 'calculator-form__input-error' : ''}`}
+            data-testid='time-input'
             onChange={(selectedDates) => {
               if (selectedDates.length > 0) {
                 setTimeAmount(selectedDates[0].toString())
