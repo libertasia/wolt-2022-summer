@@ -16,6 +16,6 @@ My solution is written in TypeScript and uses React.js + Redux. Even though Redu
 
 ### Running the project
 
-To start the project clone the repository and then run `build_and_start.sh` script in the root of the repo. The script will check if Docker is installed, then build the image (running unit tests in the process) and start the app in interactive mode. The app will be exposed at http://localhost:3000. To stop the app press <kbd>Ctrl</kbd> + <kbd>C</kbd>.
+To start the project run `build_and_start.sh` script in the root of the repo. The script will check if Docker is installed, then build the image (running unit tests in the process) and start the app in interactive mode. The app will be exposed at http://localhost:3000. To stop the app press <kbd>Ctrl</kbd> + <kbd>C</kbd>.
 
 Built Docker images are tagged as `aerokhina-wolt-2022`.
