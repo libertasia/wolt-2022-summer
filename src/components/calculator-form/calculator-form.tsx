@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import "flatpickr/dist/flatpickr.min.css";
+import 'flatpickr/dist/flatpickr.min.css';
 import Flatpickr from 'react-flatpickr';
 import { useAppDispatch } from '../../app/hooks';
 import {
@@ -63,14 +63,14 @@ const CalculatorForm: React.FC = () => {
   }
 
   return (
-    <form className="calculator__form calculator-form" action="#" method="get" onSubmit={formSubmitHandler}>
-      <div className="calculator-form__field-wrapper">
-        <label className="calculator-form__label" htmlFor="cart-value">Cart value, <span>&euro;</span></label>
-        <div className="calculator-form__input-wrapper">
+    <form className='calculator__form calculator-form' action='#' method='get' onSubmit={formSubmitHandler}>
+      <div className='calculator-form__field-wrapper'>
+        <label className='calculator-form__label' htmlFor='cart-value'>Cart value, <span>&euro;</span></label>
+        <div className='calculator-form__input-wrapper'>
           <input
-            className={`calculator-form__input ${isCartAmountError ? "calculator-form__input-error" : ""}`}
-            id="cart-value" type="number" name="cart-value" step="any" min={0}
-            placeholder="20"
+            className={`calculator-form__input ${isCartAmountError ? 'calculator-form__input-error' : ''}`}
+            id='cart-value' type='number' name='cart-value' step='any' min={0}
+            placeholder='20'
             value={cartAmount}
             onKeyDown={keyDownHandler}
             onChange={(e) => {
@@ -89,13 +89,13 @@ const CalculatorForm: React.FC = () => {
         </div>
       </div>
 
-      <div className="calculator-form__field-wrapper">
-        <label className="calculator-form__label" htmlFor="distance">Delivery distance, <span>m</span></label>
-        <div className="calculator-form__input-wrapper">
+      <div className='calculator-form__field-wrapper'>
+        <label className='calculator-form__label' htmlFor='distance'>Delivery distance, <span>m</span></label>
+        <div className='calculator-form__input-wrapper'>
           <input
-            className={`calculator-form__input ${isDistanceError ? "calculator-form__input-error" : ""}`}
-            id="distance" type="number" name="distance" min={0}
-            placeholder="1500"
+            className={`calculator-form__input ${isDistanceError ? 'calculator-form__input-error' : ''}`}
+            id='distance' type='number' name='distance' min={0}
+            placeholder='1500'
             value={distanceAmount}
             onKeyDown={keyDownHandler}
             onChange={(e) => {
@@ -114,13 +114,13 @@ const CalculatorForm: React.FC = () => {
         </div>
       </div>
 
-      <div className="calculator-form__field-wrapper">
-        <label className="calculator-form__label" htmlFor="amount">Amount of items</label>
-        <div className="calculator-form__input-wrapper">
+      <div className='calculator-form__field-wrapper'>
+        <label className='calculator-form__label' htmlFor='amount'>Amount of items</label>
+        <div className='calculator-form__input-wrapper'>
           <input
-            className={`calculator-form__input ${isItemsAmountError ? "calculator-form__input-error" : ""}`}
-            id="amount" type="number" name="amount" min={0}
-            placeholder="5"
+            className={`calculator-form__input ${isItemsAmountError ? 'calculator-form__input-error' : ''}`}
+            id='amount' type='number' name='amount' min={0}
+            placeholder='5'
             value={itemsAmount}
             onKeyDown={keyDownHandler}
             onChange={(e) => {
@@ -139,11 +139,11 @@ const CalculatorForm: React.FC = () => {
         </div>
       </div>
 
-      <div className="calculator-form__field-wrapper">
-        <label className="calculator-form__label" htmlFor="time">Time</label>
-        <div className="calculator-form__input-wrapper">
+      <div className='calculator-form__field-wrapper'>
+        <label className='calculator-form__label' htmlFor='time'>Time</label>
+        <div className='calculator-form__input-wrapper'>
           <Flatpickr
-            className={`calculator-form__input calculator-form__input--calendar ${isTimeError ? "calculator-form__input-error" : ""}`}
+            className={`calculator-form__input calculator-form__input--calendar ${isTimeError ? 'calculator-form__input-error' : ''}`}
             onChange={(selectedDates) => {
               if (selectedDates.length > 0) {
                 setTimeAmount(selectedDates[0].toString())
@@ -152,12 +152,12 @@ const CalculatorForm: React.FC = () => {
                 dispatch(setTime(selectedDates[0].toUTCString()));
               }
               else {
-                setTimeAmount("");
+                setTimeAmount('');
                 setIsTimeError(true);
               }
             }}
-            name="time"
-            placeholder="Select Date and Time.."
+            name='time'
+            placeholder='Select Date and Time..'
             options={{
               enableTime: true,
               dateFormat: DATE_FORMAT,
@@ -169,7 +169,7 @@ const CalculatorForm: React.FC = () => {
         </div>
       </div>
 
-      <button className="calculator-form__button" type="submit">Calculate delivery price</button>
+      <button className='calculator-form__button' type='submit'>Calculate delivery price</button>
     </form>
   )
 }

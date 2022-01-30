@@ -2,7 +2,7 @@ import React from 'react';
 
 const ErrorMessage: React.FC = () => {
   return (
-    <div className="calculator-form__error-message">
+    <div className='calculator-form__error-message'>
       <span>Required field</span>
     </div>
   )

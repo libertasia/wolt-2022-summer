@@ -13,7 +13,7 @@ import {
   FRIDAY_RUSH_HOUR_START,
   FRIDAY_RUSH_MULTIPLIER,
   MAX_DELIVERY_FEE
-} from "./const";
+} from './const';
 
 export type ReturnDeliveryFee = (
   cartValue: number,

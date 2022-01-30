@@ -30,4 +30,4 @@ export const DATE_FORMAT: string = `d-m-Y H:i`;
 
 export const MIN_DATE: string = `today`;
 
-export const REGEX_ARRAY: Array<string> = ["e", "E", "+", "-"];
+export const REGEX_ARRAY: Array<string> = ['e', 'E', '+', '-'];

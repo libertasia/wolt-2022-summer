@@ -1,6 +1,6 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { calculateDeliveryFee } from "../utils";
-import { RootState } from "./store";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { calculateDeliveryFee } from '../utils';
+import { RootState } from './store';
 
 export interface CalculatorState {
   cartValue: number;
@@ -15,7 +15,7 @@ const initialState: CalculatorState = {
   cartValue: 0,
   distance: 0,
   amountOfItems: 0,
-  time: "",
+  time: '',
   deliveryFee: 0,
   isFeeCalculated: false,
 };
