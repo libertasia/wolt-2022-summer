@@ -6,7 +6,7 @@ export interface CalculatorState {
   cartValue: number;
   distance: number;
   amountOfItems: number;
-  time: Date;
+  time: string;
   deliveryFee: number;
   isFeeCalculated: boolean;
 }
@@ -15,7 +15,7 @@ const initialState: CalculatorState = {
   cartValue: 0,
   distance: 0,
   amountOfItems: 0,
-  time: new Date(),
+  time: "",
   deliveryFee: 0,
   isFeeCalculated: false,
 };
@@ -33,11 +33,11 @@ export const calculatorSlice = createSlice({
     setAmount: (state, action: PayloadAction<number>) => {
       state.amountOfItems = action.payload;
     },
-    setTime: (state, action: PayloadAction<Date>) => {
+    setTime: (state, action: PayloadAction<string>) => {
       state.time = action.payload;
     },
     setDeliveryFee: (state, action: PayloadAction<boolean>) => {
-      state.deliveryFee = calculateDeliveryFee(state.cartValue, state.distance, state.amountOfItems, state.time);
+      state.deliveryFee = calculateDeliveryFee(state.cartValue, state.distance, state.amountOfItems, new Date(state.time));
       state.isFeeCalculated = action.payload;
     },
     setIsFeeCalculatedStatus: (state, action: PayloadAction<boolean>) => {

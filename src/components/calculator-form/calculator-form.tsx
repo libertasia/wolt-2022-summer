@@ -149,7 +149,7 @@ const CalculatorForm: React.FC = () => {
                 setTimeAmount(selectedDates[0].toString())
                 setIsTimeError(checkTimeError(selectedDates[0].toString()))
                 dispatch(setIsFeeCalculatedStatus(false));
-                dispatch(setTime(selectedDates[0]));
+                dispatch(setTime(selectedDates[0].toUTCString()));
               }
               else {
                 setTimeAmount("");
